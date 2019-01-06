@@ -1,0 +1,14 @@
+# query all categories
+query Categories {
+  categories{
+    id,
+    name,
+    description,
+    foods{
+      name,
+      description,
+      tastes,
+      photoUrls
+    }
+  }
+}
