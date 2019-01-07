@@ -37,8 +37,19 @@ public class MainActivity extends AppCompatActivity {
                 .enqueue(new ApolloCall.Callback<CategoriesQuery.Data>() {
                     @Override
                     public void onResponse(@NotNull Response<CategoriesQuery.Data> response) {
-                        Object name = response.data().categories();
-                        Log.d("QLSUCCESS DATA ==>", name.toString());
+                        final String name = response.data().categories().get(0).name();
+                        Log.d("QLSUCCESS DATA ==>", name);
+
+                        for (int i = 0; i < response.data().categories().size(); i++) {
+                            Log.d("ALL Categories", response.data().categories().get(i).name());
+                        }
+
+                        MainActivity.this.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                textView.setText(name);
+                            }
+                        });
                     }
 
                     @Override
