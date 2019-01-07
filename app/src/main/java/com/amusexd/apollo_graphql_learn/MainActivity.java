@@ -37,8 +37,8 @@ public class MainActivity extends AppCompatActivity {
                 .enqueue(new ApolloCall.Callback<CategoriesQuery.Data>() {
                     @Override
                     public void onResponse(@NotNull Response<CategoriesQuery.Data> response) {
-                        String name = response.data().categories().get(0).name();
-                        Log.d("QLSUCCESS DATA ==>", name);
+                        Object name = response.data().categories();
+                        Log.d("QLSUCCESS DATA ==>", name.toString());
                     }
 
                     @Override
