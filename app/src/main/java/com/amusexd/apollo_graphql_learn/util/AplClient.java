@@ -6,6 +6,7 @@ import okhttp3.OkHttpClient;
 
 public class AplClient {
     public static final String BASE_URL = "http://10.0.2.2:8801/graphql";
+    public static final String TAG = "Client Android App";
     private static ApolloClient mApolloClient;
 
     public static ApolloClient getmApolloClient() {
