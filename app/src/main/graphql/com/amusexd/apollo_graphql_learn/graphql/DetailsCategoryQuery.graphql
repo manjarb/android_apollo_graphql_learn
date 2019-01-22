@@ -1,0 +1,15 @@
+# query all food under a category
+query GetCategoryDetails($categoryId: ID!) {
+  category (id: $categoryId) {
+    id
+    name
+    description
+    foods{
+      id
+      name
+      description
+      tastes
+      photoUrls
+    }
+  }
+}
