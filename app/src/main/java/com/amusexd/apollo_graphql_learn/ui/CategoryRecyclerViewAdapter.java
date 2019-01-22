@@ -1,6 +1,7 @@
 package com.amusexd.apollo_graphql_learn.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.amusexd.apollo_graphql_learn.DetailsActivity;
 import com.amusexd.apollo_graphql_learn.R;
 import com.amusexd.apollo_graphql_learn.graphql.CategoriesQuery;
 import com.amusexd.apollo_graphql_learn.util.AplClient;
@@ -77,7 +79,7 @@ public class CategoryRecyclerViewAdapter
             this.context = context;
         }
 
-        void setCategory(CategoriesQuery.Category category) {
+        void setCategory(final CategoriesQuery.Category category) {
             categoryTextView.setText(category.name());
             ageTextView.setText(category.id());
             professionTextViev.setText(category.description());
@@ -87,6 +89,15 @@ public class CategoryRecyclerViewAdapter
                 @Override
                 public void onClick(View v) {
                     Log.d(AplClient.TAG, categoryId);
+
+                    Intent intent = new Intent(context, DetailsActivity.class);
+                    intent.putExtra("categoryId", categoryId);
+                    intent.putExtra("name", category.name());
+                    intent.putExtra("description", category.description());
+                    intent.putExtra("age", category.name());
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
+
                 }
             });
         }
